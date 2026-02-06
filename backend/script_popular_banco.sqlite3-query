@@ -1,0 +1,55 @@
+-- database: ./db.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM api_usuario;
+
+INSERT INTO api_usuario (nome, email, telefone, tipo) VALUES
+('Ana Paula Ribeiro', 'ana.ribeiro@gmail.com', '11981234501', 'LOCATARIO'),
+('Carlos Eduardo Nunes', 'carlos.nunes@gmail.com', '11981234502', 'LOCADOR'),
+('Fernanda Lopes Martins', 'fernanda.martins@gmail.com', '11981234503', 'LOCATARIO'),
+('Rafael Augusto Silva', 'rafael.silva@gmail.com', '11981234504', 'LOCADOR'),
+('Juliana Pacheco Costa', 'juliana.costa@gmail.com', '11981234505', 'LOCATARIO'),
+('Marcos Vinicius Teixeira', 'marcos.teixeira@gmail.com', '11981234506', 'LOCADOR'),
+('Patricia Almeida Rocha', 'patricia.rocha@gmail.com', '11981234507', 'LOCATARIO'),
+('Lucas Henrique Farias', 'lucas.farias@gmail.com', '11981234508', 'LOCADOR'),
+('Renata Gomes Barros', 'renata.barros@gmail.com', '11981234509', 'LOCATARIO'),
+('Bruno Cesar Moreira', 'bruno.moreira@gmail.com', '11981234510', 'LOCADOR');
+
+INSERT INTO api_imovel (titulo, tipo, valor_aluguel, status, locador_id) VALUES
+('Apartamento Centro', 'Apartamento', 1500.00, 'DISPONIVEL', 1),
+('Casa Jardim América', 'Casa', 2800.00, 'ALUGADO', 8),
+('Kitnet Universitária', 'Kitnet', 900.00, 'DISPONIVEL', 1),
+('Cobertura Luxo', 'Apartamento', 5200.00, 'DISPONIVEL', 3),
+('Casa Praia', 'Casa', 3500.00, 'ALUGADO', 6),
+('Sala Comercial Centro', 'Comercial', 2200.00, 'DISPONIVEL', 3),
+('Apartamento Zona Sul', 'Apartamento', 1800.00, 'ALUGADO', 1),
+('Galpão Industrial', 'Galpão', 7500.00, 'DISPONIVEL', 9),
+('Studio Moderno', 'Studio', 1300.00, 'DISPONIVEL', 3),
+('Casa Condomínio Fechado', 'Casa', 4200.00, 'ALUGADO', 15);
+
+
+INSERT INTO api_contrato (data_inicio, data_fim, valor, imovel_id, locador_id, locatario_id) VALUES
+('2024-01-01', '2024-12-31', 1500.00, 1, 1, 4),
+('2024-02-01', '2025-01-31', 2800.00, 2, 5, 3),
+('2024-03-01', '2024-08-31', 900.00, 3, 1, 9),
+('2024-01-15', '2025-01-14', 5200.00, 4, 3, 4),
+('2024-04-01', '2024-10-31', 3500.00, 5, 7, 1),
+('2024-05-01', '2025-04-30', 2200.00, 6, 3, 8),
+('2024-06-01', '2025-05-31', 1800.00, 7, 1, 3),
+('2024-07-01', '2026-06-30', 7500.00, 8, 10, 4),
+('2024-08-01', '2025-07-31', 1300.00, 9, 3, 1),
+('2024-09-01', '2025-08-31', 4200.00, 10, 1, 12);
+
+
+INSERT INTO api_pagamento (data_pagamento, valor, status, contrato_id) VALUES
+('2024-01-05', 1500.00, 1, 1),
+('2024-02-05', 2800.00, 1, 2),
+('2024-03-05', 900.00, 1, 3),
+('2024-02-05', 5200.00, 1, 4),
+('2024-04-05', 3500.00, 0, 5),
+('2024-05-05', 2200.00, 1, 6),
+('2024-06-05', 1800.00, 1, 7),
+('2024-07-05', 7500.00, 0, 8),
+('2024-08-05', 1300.00, 1, 9),
+('2024-09-05', 4200.00, 1, 10);
