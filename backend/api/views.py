@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from .filters import UsuarioFilter
+from .filters import *
 
 #################################### ModelViewSet ##############################
 class UsuarioViewSet(ModelViewSet):
@@ -17,12 +17,6 @@ class UsuarioViewSet(ModelViewSet):
     serializer_class = UsuarioSerializer
     # permission_classes = [IsAuthenticated]
 
-    # Filtro básico
-    # def get_queryset(self):
-    #     tipo = self.request.query_params.get('tipo')
-    #     if tipo:
-    #         self.queryset = self.queryset.filter(tipo=tipo)
-    #     return self.queryset
 
     
     # Filtros declarativos
@@ -33,28 +27,23 @@ class ImovelViewSet(ModelViewSet):
     queryset = Imovel.objects.all()
     serializer_class = ImovelSerializer
 
-    # Filtro básico
-    # def get_queryset(self):
-    #     status = self.request.query_params.get('status')
-    #     tipo = self.request.query_params.get('tipo')
-        
-    #     if status:
-    #         self.queryset = self.queryset.filter(status=status)
-    #     if tipo:
-    #         self.queryset = self.queryset.filter(tipo=tipo)
-    #     return self.queryset
-
     # Filtros declarativos
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'tipo']
+    filterset_class = ImovelFilter
 
 class PagamentoViewSet(ModelViewSet):
     queryset = Pagamento.objects.all()
     serializer_class = PagamentoSerializer
 
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = PagamentoFilter
+
 class ContratoViewSet(ModelViewSet):
     queryset = Contrato.objects.all()
     serializer_class = ContratoSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ContratoFilter
 
 # @api_view(['GET', 'POST'])
 # def listar_usuarios(request):

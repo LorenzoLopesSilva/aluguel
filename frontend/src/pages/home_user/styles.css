@@ -1,0 +1,7 @@
+.tabela{
+    margin: 20px;
+}
+
+.tabela th, td{
+    padding: 1px 5px;
+}
