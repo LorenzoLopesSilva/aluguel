@@ -31,11 +31,6 @@ class RegisterSerializer(serializers.Serializer):
 
         user.is_staff = False
         user.is_active = True
-        
-        if tipo == "LOCADOR":
-            user.is_superuser = True
-        else:
-            user.is_superuser = False
 
         user.save()
 
@@ -53,10 +48,12 @@ class RegisterSerializer(serializers.Serializer):
 class UsuarioMeSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
     email = serializers.CharField(source='user.email', read_only=True)
+    is_staff = serializers.BooleanField(source='user.is_staff', read_only=True)
+
 
     class Meta:
         model = Usuario
-        filds = ('id', 'nome', 'email', 'telefone', 'tipo')
+        filds = ['id', 'nome', 'email', 'telefone', 'tipo', 'is_staff']
 
 
 class ImovelSerializer(serializers.ModelSerializer):

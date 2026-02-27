@@ -31,6 +31,13 @@ class UsuarioViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = UsuarioFilter
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        if self.request.user.is_staff:
+            return qs
+        return qs.filter(user=self.queryset.user)
+
 class ImovelViewSet(ModelViewSet):
     queryset = Imovel.objects.all()
     serializer_class = ImovelSerializer
@@ -49,13 +56,34 @@ class ImovelViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['tipo', 'status']
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        if self.request.user.is_staff:
+            return qs
+        return qs.filter(user=self.queryset.user)
+
 class PagamentoViewSet(ModelViewSet):
     queryset = Pagamento.objects.all()
     serializer_class = PagamentoSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        if self.request.user.is_staff:
+            return qs
+        return qs.filter(user=self.queryset.user)
+
 class ContratoViewSet(ModelViewSet):
     queryset = Contrato.objects.all()
     serializer_class = ContratoSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        if self.request.user.is_staff:
+            return qs
+        return qs.filter(user=self.queryset.user)
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
