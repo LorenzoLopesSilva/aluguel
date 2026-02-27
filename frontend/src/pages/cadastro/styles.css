@@ -1,0 +1,23 @@
+.container{
+    width: 100vw;
+}
+.inputContainer{
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 2%;
+    margin: 0 auto;
+    width: 40%;
+    border-radius: 30px;
+
+    input{
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        background: white;
+    }
+    button{
+        background: #000;
+        color: white;
+    }
+}

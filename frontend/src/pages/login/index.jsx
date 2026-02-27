@@ -33,6 +33,10 @@ export default function Login(){
 
     }
 
+    function goCadastro() {
+        navigate('/cadastro')
+    }
+
     return(
         <div className="container_login">
             <section className="section_1">
@@ -60,6 +64,8 @@ export default function Login(){
                 </div>
 
                 <button className="btn_1" onClick={logar}>Enter</button>
+
+                <p onClick={goCadastro}>Cadastre-se</p>
 
             </section>
 

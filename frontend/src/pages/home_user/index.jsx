@@ -9,10 +9,11 @@ export default function HomeUser() {
     const [nome, setNome] = useState('')
     const [usuarioFiltro, setUsuarioFiltro] = useState([])
 
+
     const getUsuarios = async () => {
         try {
             const response = await axios.get(
-                'http://127.0.0.1:8000/api/usuarios',
+                'http://127.0.0.1:8000/api/users/',
                 {
                     headers: {Authorization: `Bearer ${token}`}
                 }
